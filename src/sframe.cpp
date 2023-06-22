@@ -1,6 +1,6 @@
 #include <sframe/sframe.h>
 
-#include "crypto.h"
+#include "crypto_priv.h"
 #include "header.h"
 
 #include <algorithm>
