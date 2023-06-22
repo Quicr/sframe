@@ -53,6 +53,11 @@ ContextBase::add_key(KeyID key_id, const bytes& base_key)
   keys.emplace(key_id, KeyAndSalt::from_base_key(suite, base_key));
 }
 
+bool ContextBase::has_key(KeyID kid)
+{
+  return (keys.count(kid) > 0);
+}
+
 static bytes
 form_nonce(Counter ctr, const bytes& salt)
 {
