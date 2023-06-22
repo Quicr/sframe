@@ -97,6 +97,7 @@ public:
   virtual ~ContextBase();
 
   void add_key(KeyID kid, const bytes& key);
+  bool has_key(KeyID kid);
 
   output_bytes protect(const Header& header,
                        output_bytes ciphertext,
