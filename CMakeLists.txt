@@ -86,7 +86,12 @@ file(GLOB_RECURSE LIB_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src
 
 add_library(${LIB_NAME} ${LIB_HEADERS} ${LIB_SOURCES})
 add_dependencies(${LIB_NAME} gsl)
-target_link_libraries(${LIB_NAME} PRIVATE gsl OpenSSL::Crypto)
+target_link_libraries(${LIB_NAME} 
+  PUBLIC
+    gsl
+  PRIVATE 
+    OpenSSL::Crypto
+)
 target_include_directories(${LIB_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>

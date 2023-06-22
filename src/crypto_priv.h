@@ -1,7 +1,7 @@
 #pragma once
 
 #include <openssl/hmac.h>
-#include <sframe/sframe.h>
+#include <sframe/crypto.h>
 
 #include <array>
 
@@ -40,21 +40,9 @@ struct HMAC
   std::array<uint8_t, EVP_MAX_MD_SIZE> md;
 };
 
-bytes
-hkdf_extract(CipherSuite suite, const bytes& salt, const bytes& ikm);
-
-bytes
-hkdf_expand(CipherSuite suite,
-            const bytes& secret,
-            const bytes& info,
-            size_t size);
-
 ///
 /// AEAD Algorithms
 ///
-
-size_t
-overhead(CipherSuite suite);
 
 output_bytes
 seal(CipherSuite suite,

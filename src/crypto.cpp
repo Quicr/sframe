@@ -1,4 +1,4 @@
-#include "crypto.h"
+#include "crypto_priv.h"
 
 #include <openssl/err.h>
 #include <openssl/evp.h>
