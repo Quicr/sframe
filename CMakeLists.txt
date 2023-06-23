@@ -17,7 +17,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-  add_compile_options(-Wall -pedantic -Wextra -Werror -Wmissing-declarations)
+  add_compile_options(-Wall -pedantic -Wextra -Wmissing-declarations)
 elseif(MSVC)
   add_compile_options(/W4 /WX)
 
@@ -49,7 +49,7 @@ endif()
 ###
 
 # External libraries
-find_package(OpenSSL 1.1 REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # gsl-lite fetched from GitHub
 include( ExternalProject )
@@ -90,7 +90,7 @@ target_link_libraries(${LIB_NAME}
   PUBLIC
     gsl
   PRIVATE 
-    OpenSSL::Crypto
+    crypto
 )
 target_include_directories(${LIB_NAME}
   PUBLIC
