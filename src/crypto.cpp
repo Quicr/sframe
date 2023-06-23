@@ -153,18 +153,6 @@ hmac_for_hkdf(CipherSuite suite, input_bytes key, input_bytes data)
   const auto type = openssl_digest_type(suite);
   auto ctx = scoped_hmac_ctx(HMAC_CTX_new(), HMAC_CTX_free);
 
-  // Some FIPS-enabled libraries are overly conservative in their interpretation
-  // of NIST SP 800-131A, which requires HMAC keys to be at least 112 bits long.
-  // That document does not impose that requirement on HKDF, so we disable FIPS
-  // enforcement for purposes of HKDF.
-  //
-  // https://doi.org/10.6028/NIST.SP.800-131Ar2
-  // static const auto fips_min_hmac_key_len = 14;
-  auto key_size = static_cast<int>(key.size());
-  // if (FIPS_mode() != 0 && key_size < fips_min_hmac_key_len) {
-  //   HMAC_CTX_set_flags(ctx.get(), EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
-  // }
-
   // Guard against sending nullptr to HMAC_Init_ex
   const auto* key_data = key.data();
   const auto non_null_zero_length_key = uint8_t(0);
