@@ -2,6 +2,8 @@
 
 #include <openssl/hmac.h>
 #include <sframe/crypto.h>
+#include <openssl/crypto.h>
+#include <openssl/cipher.h>
 
 #include <array>
 

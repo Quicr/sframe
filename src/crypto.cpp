@@ -2,6 +2,9 @@
 
 #include <openssl/err.h>
 #include <openssl/evp.h>
+#include <openssl/mem.h>
+#include <openssl/crypto.h>
+#include <openssl/cipher.h>
 
 namespace sframe {
 
@@ -156,11 +159,11 @@ hmac_for_hkdf(CipherSuite suite, input_bytes key, input_bytes data)
   // enforcement for purposes of HKDF.
   //
   // https://doi.org/10.6028/NIST.SP.800-131Ar2
-  static const auto fips_min_hmac_key_len = 14;
+  // static const auto fips_min_hmac_key_len = 14;
   auto key_size = static_cast<int>(key.size());
-  if (FIPS_mode() != 0 && key_size < fips_min_hmac_key_len) {
-    HMAC_CTX_set_flags(ctx.get(), EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
-  }
+  // if (FIPS_mode() != 0 && key_size < fips_min_hmac_key_len) {
+  //   HMAC_CTX_set_flags(ctx.get(), EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
+  // }
 
   // Guard against sending nullptr to HMAC_Init_ex
   const auto* key_data = key.data();

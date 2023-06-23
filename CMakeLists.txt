@@ -49,7 +49,7 @@ endif()
 ###
 
 # External libraries
-find_package(OpenSSL 1.1 REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # gsl-lite fetched from GitHub
 include( ExternalProject )
