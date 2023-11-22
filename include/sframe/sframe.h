@@ -4,8 +4,7 @@
 #include <map>
 #include <memory>
 #include <vector>
-
-#include <gsl/gsl-lite.hpp>
+#include <span>
 
 namespace sframe {
 
@@ -47,8 +46,8 @@ enum class CipherSuite : uint16_t
 constexpr size_t max_overhead = 17 + 16;
 
 using bytes = std::vector<uint8_t>;
-using input_bytes = gsl::span<const uint8_t>;
-using output_bytes = gsl::span<uint8_t>;
+using input_bytes = std::span<const uint8_t>;
+using output_bytes = std::span<uint8_t>;
 
 std::ostream&
 operator<<(std::ostream& str, const input_bytes data);
