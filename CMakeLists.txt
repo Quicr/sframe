@@ -4,6 +4,7 @@ project(sframe
   VERSION 0.1
   LANGUAGES CXX
 )
+include(GNUInstallDirs)
 
 option(TESTING    "Build tests" OFF)
 option(CLANG_TIDY "Perform linting with clang-tidy" OFF)
@@ -126,7 +127,6 @@ endif()
 ###
 ### Installation
 ###
-include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 export(
   EXPORT
